@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=89ce154e-3bbd-442d-bd11-eaf0d6a69c86
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karakorum — AI Engineering &amp; Digital Growth Studio</title>
+  <meta name="description" content="Karakorum is a software engineering and digital marketing studio. We build AI-powered applications, mobile apps, and growth strategies." />
+  <meta name="keywords" content="AI development, digital marketing, mobile app development, software studio, AI agents, RAG systems" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Karakorum — AI Engineering & Digital Growth Studio" />
+  <meta property="og:description" content="AI software and digital growth, delivered lean." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://karakorum.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Karakorum — AI Engineering & Digital Growth Studio" />
+  <meta name="twitter:description" content="AI software and digital growth, delivered lean." />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Karakorum","description":"Software engineering and digital marketing studio specializing in AI applications and growth strategy.","url":"https://karakorum.dev","contactPoint":{"@type":"ContactPoint","telephone":"+91-9873801605","contactType":"sales","email":"summati@zohomail.in"}}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',-apple-system,sans-serif;background:#0a0806;color:#ece5dc;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;perspective:800px}
+    ::selection{background:#d4a856;color:#0a0806}
+
+    #bg3d{position:fixed;inset:0;z-index:0;pointer-events:none}
+    .container{max-width:1080px;margin:0 auto;padding:0 32px;position:relative;z-index:2}
+
+    /* -- 3D DEPTH ELEMENTS -- */
+    .depth-layer{position:fixed;pointer-events:none;will-change:transform}
+    .depth-ring{position:fixed;pointer-events:none;border-radius:50%;border:1px solid rgba(212,168,86,.08);will-change:transform}
+    .depth-glow{position:fixed;pointer-events:none;border-radius:50%;will-change:transform}
+    .depth-bar{position:fixed;pointer-events:none;height:1px;will-change:transform;background:linear-gradient(90deg,transparent,rgba(212,168,86,.06),transparent)}
+
+    .dr1{width:500px;height:500px;top:-20%;left:-10%;border-color:rgba(212,168,86,.06)}
+    .dr2{width:350px;height:350px;bottom:15%;right:-8%;border-color:rgba(201,122,90,.06)}
+    .dr3{width:200px;height:200px;top:40%;left:60%;border-color:rgba(123,92,199,.05)}
+    .dg1{width:600px;height:600px;top:5%;right:-20%;background:radial-gradient(circle,rgba(212,168,86,.04) 0%,transparent 70%)}
+    .dg2{width:400px;height:400px;bottom:40%;left:-10%;background:radial-gradient(circle,rgba(201,122,90,.03) 0%,transparent 70%)}
+    .db1{width:80%;top:25%;left:10%}
+    .db2{width:60%;bottom:35%;right:5%}
+    .db3{width:70%;top:70%;left:15%}
+
+    nav{display:flex;justify-content:space-between;align-items:center;padding:14px 32px;position:sticky;top:0;z-index:20;max-width:1144px;margin:0 auto;background:#0a0806;border-bottom:1px solid rgba(255,255,255,.03)}
+    .logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+    .logo-icon{width:32px;height:32px;flex-shrink:0}
+    .logo-text{font-size:1.1rem;font-weight:800;letter-spacing:-.03em;color:#ece5dc}
+    .nav-links{display:flex;gap:24px}
+    .nav-links a{color:#6a6258;text-decoration:none;font-size:.82rem;font-weight:500;transition:color .3s}
+    .nav-links a:hover{color:#ece5dc}
+
+    .hero{min-height:100vh;display:flex;align-items:center;position:relative;z-index:2}
+    .hero .container{padding:120px 32px 60px;text-align:center}
+    .hero-badge{display:inline-block;padding:5px 16px;border-radius:100px;font-size:.7rem;font-weight:600;letter-spacing:.06em;background:rgba(212,168,86,.06);color:#d4a856;border:1px solid rgba(212,168,86,.12);margin-bottom:24px}
+    .hero h1{font-size:3.6rem;font-weight:900;letter-spacing:-.05em;line-height:1.08;max-width:740px;margin:0 auto;color:#ece5dc}
+    .hero h1 span{background:linear-gradient(135deg,#d4a856,#c97a5a);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .hero p{font-size:1.05rem;color:#6a6258;max-width:520px;margin:20px auto 36px;line-height:1.75}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 28px;border-radius:8px;font-weight:600;font-size:.88rem;text-decoration:none;background:#d4a856;color:#0a0806;transition:transform .3s,box-shadow .3s,background .3s;transform:translateZ(0)}
+    .btn:hover{background:#c9953a;transform:translateY(-3px) translateZ(30px);box-shadow:0 20px 48px rgba(212,168,86,.25)}
+    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,.08);color:#ece5dc}
+    .btn-outline:hover{background:rgba(255,255,255,.03);border-color:rgba(212,168,86,.25)}
+
+    .section-label{text-align:center;margin-bottom:48px}
+    .section-label span{display:inline-block;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:#d4a856;margin-bottom:8px}
+    .section-label h2{font-size:2rem;font-weight:800;letter-spacing:-.04em;line-height:1.2;color:#ece5dc}
+    .section-label p{color:#6a6258;font-size:.9rem;max-width:480px;margin:8px auto 0;line-height:1.7}
+
+    .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.23,1,.32,1),transform .7s cubic-bezier(.23,1,.32,1)}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+    section{padding:100px 0;position:relative;z-index:2}
+
+    /* -- CAPABILITIES -- */
+    .caps{display:flex;flex-direction:column;gap:10px;max-width:780px;margin:0 auto}
+    .cap-item{display:flex;align-items:flex-start;gap:16px;padding:18px 20px;border-radius:8px;transition:transform .4s cubic-bezier(.23,1,.32,1),border-color .4s,background .4s;border:1px solid transparent;transform:translateZ(0) rotateX(0) rotateY(0)}
+    .cap-item:hover{transform:translateZ(60px) rotateX(-4deg) rotateY(4deg);border-color:rgba(212,168,86,.1);background:rgba(255,255,255,.012)}
+    .cap-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:transform .4s}
+    .cap-item:hover .cap-icon{transform:scale(1.12)}
+    .cap-body h3{font-size:.92rem;font-weight:700;margin-bottom:3px}
+    .cap-body p{font-size:.82rem;color:#5e564c;line-height:1.6}
+
+    /* -- WORK -- */
+    .work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:860px;margin:0 auto}
+    .work-card{border-radius:10px;overflow:hidden;background:rgba(255,255,255,.008);border:1px solid rgba(255,255,255,.035);transition:transform .4s cubic-bezier(.23,1,.32,1),border-color .4s;transform:translateZ(0) rotateX(0) rotateY(0)}
+    .work-card:hover{border-color:rgba(212,168,86,.12);transform:translateZ(70px) rotateX(-5deg) rotateY(5deg)}
+    /* -- Project visuals (gradient compositions) -- */
+    .project-visual{position:relative;overflow:hidden;height:200px;display:flex;align-items:center;justify-content:center}
+    .work-featured .project-visual{height:280px}
+    .project-visual svg{width:48px;height:48px;opacity:.3;position:relative;z-index:1}
+    .project-visual .pv-ring{position:absolute;border-radius:50%;border:1px solid;opacity:.12;z-index:0}
+    .project-visual .pv-ring.r1{width:140px;height:140px;top:50%;left:50%;transform:translate(-50%,-50%)}
+    .project-visual .pv-ring.r2{width:100px;height:100px;top:50%;left:50%;transform:translate(-50%,-50%)}
+    .project-visual .pv-dot{position:absolute;border-radius:50%;opacity:.06;z-index:0}
+    .project-visual .pv-dot.d1{width:8px;height:8px;top:20%;right:25%}
+    .project-visual .pv-dot.d2{width:5px;height:5px;bottom:30%;left:20%}
+    .project-visual .pv-dot.d3{width:12px;height:12px;top:60%;right:15%}
+    .project-visual .pv-line{position:absolute;opacity:.04;z-index:0}
+    .project-visual .pv-line.l1{width:60%;height:1px;top:35%;left:20%;transform:rotate(-3deg)}
+    .project-visual .pv-line.l2{width:40%;height:1px;bottom:25%;right:15%;transform:rotate(2deg)}
+
+    .pv-1{background:linear-gradient(135deg,#1a1508,#2a1f0a)}
+    .pv-1 .pv-ring{border-color:#d4a856}
+    .pv-1 .pv-dot{background:#d4a856}
+    .pv-1 .pv-line{background:#d4a856}
+
+    .pv-2{background:linear-gradient(135deg,#120a1a,#1e0f2a)}
+    .pv-2 .pv-ring{border-color:#7b5cc7}
+    .pv-2 .pv-dot{background:#7b5cc7}
+    .pv-2 .pv-line{background:#7b5cc7}
+
+    .pv-3{background:linear-gradient(135deg,#180e0a,#2a160e)}
+    .pv-3 .pv-ring{border-color:#c97a5a}
+    .pv-3 .pv-dot{background:#c97a5a}
+    .pv-3 .pv-line{background:#c97a5a}
+
+    .pv-4{background:linear-gradient(135deg,#0a1410,#0f2218)}
+    .pv-4 .pv-ring{border-color:#5a9a8a}
+    .pv-4 .pv-dot{background:#5a9a8a}
+    .pv-4 .pv-line{background:#5a9a8a}
+
+    .pv-5{background:linear-gradient(135deg,#1a1208,#2a1c0a)}
+    .pv-5 .pv-ring{border-color:#d4a856}
+    .pv-5 .pv-dot{background:#d4a856}
+    .pv-5 .pv-line{background:#d4a856}
+
+    .pv-6{background:linear-gradient(135deg,#1a0e0a,#2a140e)}
+    .pv-6 .pv-ring{border-color:#c97a5a}
+    .pv-6 .pv-dot{background:#c97a5a}
+    .pv-6 .pv-line{background:#c97a5a}
+
+    .work-featured .project-visual svg{width:60px;height:60px}
+
+    /* -- Blog -- */
+    .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:860px;margin:0 auto}
+    .blog-card{border-radius:10px;overflow:hidden;background:rgba(255,255,255,.008);border:1px solid rgba(255,255,255,.035);transition:transform .4s cubic-bezier(.23,1,.32,1),border-color .4s;transform:translateZ(0)}
+    .blog-card:hover{border-color:rgba(212,168,86,.1);transform:translateZ(40px) rotateX(-2deg) rotateY(2deg)}
+    .blog-visual{position:relative;overflow:hidden;height:140px;display:flex;align-items:center;justify-content:center}
+    .bv-1{background:linear-gradient(135deg,#1a1508,#22180a)}
+    .bv-2{background:linear-gradient(135deg,#180e0a,#24140e)}
+    .bv-3{background:linear-gradient(135deg,#0a1410,#0e1e16)}
+    .blog-visual .pv-ring{border-color:#d4a856;opacity:.08}
+    .bv-2 .pv-ring{border-color:#c97a5a}
+    .bv-3 .pv-ring{border-color:#5a9a8a}
+    .blog-visual .pv-dot{background:#d4a856;opacity:.05}
+    .bv-2 .pv-dot{background:#c97a5a}
+    .bv-3 .pv-dot{background:#5a9a8a}
+    .blog-body{padding:18px 20px 20px}
+    .blog-meta{font-size:.72rem;color:#5a5248;display:block;margin-bottom:6px}
+    .blog-body h3{font-size:.92rem;font-weight:700;margin-bottom:6px;line-height:1.35}
+    .blog-body p{font-size:.8rem;color:#5e564c;line-height:1.6}
+    .blog-actions{display:flex;gap:8px;margin-top:12px}
+    .blog-share{font-size:.76rem;color:#7a7268;text-decoration:none;padding:5px 12px;border:1px solid rgba(255,255,255,.05);border-radius:5px;transition:all .3s}
+    .blog-share:hover{color:#d4a856;border-color:rgba(212,168,86,.15)}
+    .share-wa{color:#d4a856;border-color:rgba(212,168,86,.1)}
+    .share-wa:hover{background:rgba(212,168,86,.05)}
+    .blog-subscribe{text-align:center;margin-top:44px;padding:32px;border-radius:10px;border:1px solid rgba(255,255,255,.03);background:rgba(255,255,255,.006)}
+    .blog-subscribe p{color:#6a6258;font-size:.88rem;margin-bottom:14px}
+    .work-card .body{padding:18px 20px 22px}
+    .work-card .body h4{font-size:.92rem;font-weight:700;margin-bottom:4px}
+    .work-card .body p{font-size:.8rem;color:#5e564c;line-height:1.6}
+    .work-featured{grid-column:span 2}
+    .work-featured img{height:280px}
+    .work-featured:hover{transform:translateZ(90px) rotateX(-3deg) rotateY(5deg)}
+
+    /* -- TIMELINE -- */
+    .timeline{max-width:640px;margin:0 auto;position:relative}
+    .timeline::before{content:'';position:absolute;left:23px;top:20px;bottom:20px;width:1px;background:rgba(212,168,86,.08)}
+    .tl-step{display:flex;gap:20px;padding:16px 0;position:relative;transform:translateZ(0);transition:transform .4s}
+    .tl-step:hover{transform:translateZ(50px)}
+    .tl-num{width:46px;height:46px;border-radius:50%;border:1px solid rgba(212,168,86,.1);display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;color:#d4a856;flex-shrink:0;background:rgba(10,8,6,.85);position:relative;z-index:1;transition:transform .4s,border-color .4s,background .4s}
+    .tl-step:hover .tl-num{border-color:rgba(212,168,86,.25);background:rgba(212,168,86,.08);transform:scale(1.15)}
+    .tl-body h4{font-size:.92rem;font-weight:700;margin-bottom:3px}
+    .tl-body p{font-size:.82rem;color:#5e564c;line-height:1.6}
+
+    /* -- ABOUT -- */
+    .about-wrap{display:flex;gap:48px;align-items:center;max-width:860px;margin:0 auto}
+    .about-image{flex-shrink:0;width:260px;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.035);transition:transform .4s cubic-bezier(.23,1,.32,1);transform:translateZ(0)}
+    .about-image:hover{transform:translateZ(70px) rotateY(-8deg)}
+    .about-image{position:relative}
+    .about-image .img-wrap{height:320px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .about-image .img-wrap .pv-ring{border-color:#d4a856}
+    .about-image .img-wrap .pv-dot{background:#d4a856}
+    .about-image .img-wrap .pv-line{background:#d4a856}
+    .about-visual{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0f0c08,#1a140e)}
+    .about-text{flex:1}
+    .about-text p{color:#6a6258;font-size:.9rem;margin-bottom:14px;line-height:1.75}
+    .about-text p strong{color:#ece5dc;font-weight:600}
+    .signature{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.035);font-size:.85rem;font-weight:600;color:#d4a856}
+
+    /* -- CONTACT -- */
+    .contact-inner{max-width:500px;margin:0 auto;text-align:center}
+    .contact-inner h2{font-size:1.8rem;font-weight:800;letter-spacing:-.04em;margin-bottom:6px}
+    .contact-inner > p{color:#6a6258;font-size:.9rem;margin-bottom:28px}
+    .channels{display:flex;flex-direction:column;gap:10px}
+    .channel-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+    .channel-btn{display:inline-flex;align-items:center;gap:8px;color:#7a7268;text-decoration:none;font-size:.84rem;padding:11px 18px;border:1px solid rgba(255,255,255,.05);border-radius:7px;transition:transform .35s,border-color .35s,background .35s,color .35s;background:rgba(10,8,6,.4);flex:1;min-width:160px;justify-content:center;transform:translateZ(0)}
+    .channel-btn:hover{color:#ece5dc;border-color:rgba(212,168,86,.18);background:rgba(212,168,86,.05);transform:translateY(-4px) translateZ(30px)}
+    .channel-btn.primary{background:linear-gradient(135deg,rgba(212,168,86,.12),rgba(201,122,90,.08));border-color:rgba(212,168,86,.16);color:#ece5dc}
+    .channel-btn.primary:hover{background:linear-gradient(135deg,rgba(212,168,86,.2),rgba(201,122,90,.14));border-color:rgba(212,168,86,.25);box-shadow:0 10px 32px rgba(212,168,86,.1)}
+
+    .chat-toggle{position:fixed;bottom:24px;right:24px;z-index:100;width:46px;height:46px;border-radius:50%;background:#d4a856;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(212,168,86,.2);display:flex;align-items:center;justify-content:center;transition:transform .3s,box-shadow .3s;transform:translateZ(30px)}
+    .chat-toggle:hover{transform:scale(1.08) translateZ(50px);box-shadow:0 8px 28px rgba(212,168,86,.35)}
+    .chat-toggle svg{width:20px;height:20px;color:#0a0806}
+    .chat-toggle .close-icon{display:none}
+    .chat-toggle.open .chat-icon{display:none}
+    .chat-toggle.open .close-icon{display:block}
+
+    .chat-panel{position:fixed;bottom:80px;right:24px;z-index:99;width:350px;max-width:calc(100vw - 48px);height:480px;max-height:calc(100vh - 120px);border-radius:12px;border:1px solid rgba(255,255,255,.05);background:rgba(10,8,6,.97);backdrop-filter:blur(20px);display:none;flex-direction:column;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.4)}
+    .chat-panel.open{display:flex}
+    .chat-header{padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.035);display:flex;align-items:center;gap:10px}
+    .chat-header-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#d4a856,#c97a5a);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:#0a0806;flex-shrink:0}
+    .chat-header h4{font-size:.85rem;font-weight:700}
+    .chat-header p{font-size:.68rem;color:#4a4238}
+    .chat-messages{flex:1;overflow-y:auto;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+    .chat-messages::-webkit-scrollbar{width:3px}
+    .chat-messages::-webkit-scrollbar-thumb{background:rgba(255,255,255,.05);border-radius:2px}
+    .msg{max-width:85%;padding:9px 13px;border-radius:9px;font-size:.84rem;line-height:1.5;animation:msgIn .25s ease}
+    @keyframes msgIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+    .msg.bot{background:rgba(212,168,86,.05);border:1px solid rgba(212,168,86,.06);align-self:flex-start;color:#ccc5bc}
+    .msg.user{background:linear-gradient(135deg,#d4a856,#c97a5a);align-self:flex-end;color:#0a0806;border:none}
+    .msg.typing{display:flex;gap:4px;align-items:center;padding:9px 12px}
+    .msg.typing span{width:5px;height:5px;border-radius:50%;background:#d4a856;animation:typing 1s infinite}
+    .msg.typing span:nth-child(2){animation-delay:.2s}
+    .msg.typing span:nth-child(3){animation-delay:.4s}
+    @keyframes typing{0%,100%{opacity:.3}50%{opacity:1}}
+    .chat-options{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
+    .chat-options button{padding:5px 11px;border-radius:6px;font-size:.78rem;background:rgba(212,168,86,.05);border:1px solid rgba(212,168,86,.08);color:#d4a856;cursor:pointer;transition:all .2s;font-family:inherit}
+    .chat-options button:hover{background:rgba(212,168,86,.09)}
+    .chat-input-area{padding:10px 12px;border-top:1px solid rgba(255,255,255,.035);display:flex;gap:6px}
+    .chat-input-area input{flex:1;padding:8px 11px;border-radius:6px;border:1px solid rgba(255,255,255,.04);background:rgba(255,255,255,.02);color:#ece5dc;font-size:.84rem;outline:none;font-family:inherit}
+    .chat-input-area input::placeholder{color:#3a3228}
+    .chat-input-area button{padding:8px 13px;border-radius:6px;border:none;background:#d4a856;color:#0a0806;cursor:pointer;font-weight:600;font-size:.82rem;transition:background .2s;font-family:inherit}
+    .chat-input-area button:hover{background:#c9953a}
+
+    footer{text-align:center;padding:24px 0 20px;border-top:1px solid rgba(255,255,255,.025);position:relative;z-index:2}
+    .footer-links{display:flex;justify-content:center;gap:20px;margin-bottom:8px;flex-wrap:wrap}
+    .footer-links a{color:#3a3228;text-decoration:none;font-size:.78rem;transition:color .2s}
+    .footer-links a:hover{color:#6a6258}
+    footer .copyright{color:#3a3228;font-size:.78rem}
+
+    @media(max-width:768px){
+      .hero h1{font-size:2.2rem}.hero .container{padding:80px 24px 40px}.hero{min-height:auto}
+      .section-label h2{font-size:1.6rem}section{padding:60px 0}
+      .work-grid{grid-template-columns:1fr}.work-featured{grid-column:span 1}.work-featured .project-visual{height:200px}
+      .blog-grid{grid-template-columns:1fr}.blog-subscribe{padding:24px 16px}
+      .about-wrap{flex-direction:column;text-align:center}.about-image{width:100%;max-width:280px}.about-image .img-wrap{height:240px}
+      .contact-inner h2{font-size:1.4rem}.container{padding:0 20px}
+      nav{padding:14px 20px;border-radius:0}
+      .depth-ring,.depth-glow,.depth-bar{display:none}
+    }
+    @media(max-width:480px){.hero h1{font-size:1.6rem}.nav-links{gap:12px}.nav-links a{font-size:.75rem}}
+  </style>
+</head>
+<body>
+
+<div id="bg3d"></div>
+
+<!-- 3D DEPTH ELEMENTS -->
+<div class="depth-ring dr1" data-depth="0.08"></div>
+<div class="depth-ring dr2" data-depth="0.2"></div>
+<div class="depth-ring dr3" data-depth="0.35"></div>
+<div class="depth-glow dg1" data-depth="0.05"></div>
+<div class="depth-glow dg2" data-depth="0.25"></div>
+<div class="depth-bar db1" data-depth="0.12"></div>
+<div class="depth-bar db2" data-depth="0.3"></div>
+<div class="depth-bar db3" data-depth="0.18"></div>
+
+<nav>
+  <div class="logo">
+    <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+      <rect width="40" height="40" rx="10" fill="#d4a856" />
+      <path d="M20 8L32 32H8L20 8z" fill="#0a0806" opacity=".15" />
+      <path d="M20 12L28 28H12L20 12z" fill="#0a0806" />
+      <path d="M20 18L24 26H16L20 18z" fill="#d4a856" opacity=".4" />
+    </svg>
+    <span class="logo-text">Karakorum</span>
+  </div>
+  <div class="nav-links">
+    <a href="#capabilities">Capabilities</a>
+    <a href="#work">Work</a>
+    <a href="#blog">Blog</a>
+    <a href="#process">Process</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<main>
+
+<section class="hero">
+  <div class="container" id="heroContent">
+    <div class="hero-badge">Boutique AI Engineering Studio</div>
+    <h1>AI software &amp; <span>digital growth</span>, delivered lean.</h1>
+    <p>Karakorum is a software engineering and digital marketing studio building production-grade AI applications and driving measurable growth — without the layers, noise, or overhead.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn">
+        Start a project
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <a href="#capabilities" class="btn btn-outline">Our capabilities</a>
+    </div>
+  </div>
+</section>
+
+<section id="capabilities">
+  <div class="container">
+    <div class="section-label">
+      <span>Capabilities</span>
+      <h2>What we deliver.</h2>
+      <p>End-to-end AI engineering and digital marketing — from model integration to content strategy. Every project delivered direct, no layers.</p>
+    </div>
+    <div class="caps">
+      <div class="cap-item reveal">
+        <div class="cap-icon" style="background:rgba(212,168,86,.06)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d4a856" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 2-2 4-4 6-2-2-4-4-4-6a4 4 0 0 1 4-4z"/><path d="M8 14h8"/><path d="M10 18h4"/><path d="M12 22v-4"/></svg>
+        </div>
+        <div class="cap-body"><h3>Custom AI Agents</h3><p>Autonomous agents, copilots, and assistant systems built on LLMs with tool use, memory, and guardrails — production-ready from day one.</p></div>
+      </div>
+      <div class="cap-item reveal">
+        <div class="cap-icon" style="background:rgba(201,122,90,.06)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c97a5a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+        </div>
+        <div class="cap-body"><h3>RAG & Knowledge Systems</h3><p>Retrieval-augmented generation over your data. Chunking, embedding, hybrid search, and citation-grounded answers you can trust.</p></div>
+      </div>
+      <div class="cap-item reveal">
+        <div class="cap-icon" style="background:rgba(123,92,199,.06)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7b5cc7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <div class="cap-body"><h3>LLM Integration & Fine-Tuning</h3><p>API integration, prompt engineering, and fine-tuning open or closed models to match your domain, tone, and accuracy needs.</p></div>
+      </div>
+      <div class="cap-item reveal">
+        <div class="cap-icon" style="background:rgba(90,154,138,.06)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5a9a8a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        </div>
+        <div class="cap-body"><h3>AI-Powered Web Apps</h3><p>Full-stack applications with AI at the core — from frontend to backend to model inference. Built to scale and maintain.</p></div>
+      </div>
+      <div class="cap-item reveal">
+        <div class="cap-icon" style="background:rgba(212,168,86,.06)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d4a856" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+        </div>
+        <div class="cap-body"><h3>Digital Marketing & Growth</h3><p>AI-driven SEO, content strategy, audience targeting, and analytics. Data-informed marketing that drives measurable results.</p></div>
+      </div>
+      <div class="cap-item reveal">
+        <div class="cap-icon" style="background:rgba(201,122,90,.06)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c97a5a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="cap-body"><h3>Marketing Automation</h3><p>Automated email campaigns, lead nurturing flows, social media scheduling, and AI-powered personalisation at scale.</p></div>
+      </div>
+      <div class="cap-item reveal">
+        <div class="cap-icon" style="background:rgba(123,92,199,.06)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7b5cc7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg>
+        </div>
+        <div class="cap-body"><h3>AI Content & Copywriting</h3><p>LLM-generated and refined content — ad copy, landing pages, blog posts, and brand messaging optimised for your audience.</p></div>
+      </div>
+      <div class="cap-item reveal">
+        <div class="cap-icon" style="background:rgba(90,154,138,.06)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5a9a8a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="cap-body"><h3>Automation & Workflow AI</h3><p>Document processing, data extraction, classification, and decision engines that eliminate repetitive manual work.</p></div>
+      </div>
+      <div class="cap-item reveal">
+        <div class="cap-icon" style="background:rgba(212,168,86,.06)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d4a856" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+        </div>
+        <div class="cap-body"><h3>AI Consulting & Prototyping</h3><p>Feasibility studies, rapid PoCs, architecture reviews, and technical strategy — so you invest with clarity and confidence.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="container">
+    <div class="section-label">
+      <span>Selected Work</span>
+      <h2>Projects we've shipped.</h2>
+      <p>A selection of AI applications, marketing campaigns, and digital products built for clients.</p>
+    </div>
+    <div class="work-grid">
+      <div class="work-card work-featured reveal">
+        <div class="project-visual pv-1">
+          <div class="pv-ring r1"></div><div class="pv-ring r2"></div>
+          <div class="pv-dot d1"></div><div class="pv-dot d2"></div><div class="pv-dot d3"></div>
+          <div class="pv-line l1"></div><div class="pv-line l2"></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d4a856" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+        </div>
+        <div class="body"><h4>AI Fitness Mobile App</h4><p>iOS & Android app with AI workout generation, form tracking via camera, and personalised nutrition planning.</p></div>
+      </div>
+      <div class="work-card reveal">
+        <div class="project-visual pv-2">
+          <div class="pv-ring r1"></div><div class="pv-ring r2"></div>
+          <div class="pv-dot d1"></div><div class="pv-dot d2"></div><div class="pv-dot d3"></div>
+          <div class="pv-line l1"></div><div class="pv-line l2"></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7b5cc7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+        </div>
+        <div class="body"><h4>AI Analytics Dashboard</h4><p>Real-time business intelligence with natural language queries and automated insight generation.</p></div>
+      </div>
+      <div class="work-card reveal">
+        <div class="project-visual pv-3">
+          <div class="pv-ring r1"></div><div class="pv-ring r2"></div>
+          <div class="pv-dot d1"></div><div class="pv-dot d2"></div><div class="pv-dot d3"></div>
+          <div class="pv-line l1"></div><div class="pv-line l2"></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c97a5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 6 12 13 2 6"/><path d="M22 10v6"/><path d="M2 10v6"/></svg>
+        </div>
+        <div class="body"><h4>Marketing Automation Platform</h4><p>AI-powered email campaigns, lead scoring, and audience segmentation for a B2B SaaS company.</p></div>
+      </div>
+      <div class="work-card reveal">
+        <div class="project-visual pv-4">
+          <div class="pv-ring r1"></div><div class="pv-ring r2"></div>
+          <div class="pv-dot d1"></div><div class="pv-dot d2"></div><div class="pv-dot d3"></div>
+          <div class="pv-line l1"></div><div class="pv-line l2"></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#5a9a8a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </div>
+        <div class="body"><h4>RAG Knowledge Base</h4><p>Enterprise knowledge retrieval system with hybrid search and citation-grounded answers.</p></div>
+      </div>
+      <div class="work-card reveal">
+        <div class="project-visual pv-5">
+          <div class="pv-ring r1"></div><div class="pv-ring r2"></div>
+          <div class="pv-dot d1"></div><div class="pv-dot d2"></div><div class="pv-dot d3"></div>
+          <div class="pv-line l1"></div><div class="pv-line l2"></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d4a856" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+        </div>
+        <div class="body"><h4>On-Demand Service App</h4><p>Cross-platform mobile app with real-time booking, AI-powered matching, and in-app payments.</p></div>
+      </div>
+      <div class="work-card reveal">
+        <div class="project-visual pv-6">
+          <div class="pv-ring r1"></div><div class="pv-ring r2"></div>
+          <div class="pv-dot d1"></div><div class="pv-dot d2"></div><div class="pv-dot d3"></div>
+          <div class="pv-line l1"></div><div class="pv-line l2"></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c97a5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        </div>
+        <div class="body"><h4>E-Commerce AI Suite</h4><p>Product recommendation engine, dynamic pricing, and AI chatbot support for an online retailer.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="blog">
+  <div class="container">
+    <div class="section-label">
+      <span>Blog</span>
+      <h2>Insights &amp; updates.</h2>
+      <p>Thoughts on AI engineering, digital growth, and building products that matter. New posts delivered to your WhatsApp.</p>
+    </div>
+    <div class="blog-grid">
+      <article class="blog-card reveal">
+        <div class="blog-visual bv-1">
+          <div class="pv-ring r1"></div><div class="pv-ring r2"></div>
+          <div class="pv-dot d1"></div><div class="pv-dot d2"></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d4a856" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="width:36px;height:36px;opacity:.3;position:relative;z-index:1"><path d="M12 2a4 4 0 0 1 4 4c0 2-2 4-4 6-2-2-4-4-4-6a4 4 0 0 1 4-4z"/><path d="M8 14h8"/><path d="M10 18h4"/><path d="M12 22v-4"/></svg>
+        </div>
+        <div class="blog-body">
+          <span class="blog-meta">Apr 12, 2026 · 5 min read</span>
+          <h3>Building Production AI Agents That Actually Work</h3>
+          <p>Lessons from shipping autonomous agents into production — tool use, memory patterns, and when NOT to use an agent.</p>
+          <div class="blog-actions">
+            <a href="https://api.whatsapp.com/send?text=Karakorum%20blog%3A%20Building%20Production%20AI%20Agents%20That%20Actually%20Work%20https%3A%2F%2Fkarakorum.dev%23blog" target="_blank" rel="noopener" class="blog-share share-wa">Share on WhatsApp</a>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal">
+        <div class="blog-visual bv-2">
+          <div class="pv-ring r1"></div><div class="pv-ring r2"></div>
+          <div class="pv-dot d1"></div><div class="pv-dot d2"></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c97a5a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="width:36px;height:36px;opacity:.3;position:relative;z-index:1"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+        </div>
+        <div class="blog-body">
+          <span class="blog-meta">Mar 28, 2026 · 4 min read</span>
+          <h3>RAG Is Not a Silver Bullet — Here's What Works</h3>
+          <p>Chunking strategies, embedding models, and hybrid search patterns we've validated across real client deployments.</p>
+          <div class="blog-actions">
+            <a href="https://api.whatsapp.com/send?text=Karakorum%20blog%3A%20RAG%20Is%20Not%20a%20Silver%20Bullet%20%E2%80%94%20Here%27s%20What%20Works%20https%3A%2F%2Fkarakorum.dev%23blog" target="_blank" rel="noopener" class="blog-share share-wa">Share on WhatsApp</a>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal">
+        <div class="blog-visual bv-3">
+          <div class="pv-ring r1"></div><div class="pv-ring r2"></div>
+          <div class="pv-dot d1"></div><div class="pv-dot d2"></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#5a9a8a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="width:36px;height:36px;opacity:.3;position:relative;z-index:1"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="blog-body">
+          <span class="blog-meta">Mar 14, 2026 · 6 min read</span>
+          <h3>Marketing Automation With AI — Where to Start</h3>
+          <p>A practical guide to integrating LLMs into your marketing stack without overcomplicating your workflows.</p>
+          <div class="blog-actions">
+            <a href="https://api.whatsapp.com/send?text=Karakorum%20blog%3A%20Marketing%20Automation%20With%20AI%20%E2%80%94%20Where%20to%20Start%20https%3A%2F%2Fkarakorum.dev%23blog" target="_blank" rel="noopener" class="blog-share share-wa">Share on WhatsApp</a>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="blog-subscribe reveal">
+      <p>Get new posts delivered to your WhatsApp.</p>
+      <a href="https://wa.me/919873801605?text=I%20want%20to%20subscribe%20to%20Karakorum%20blog%20updates" target="_blank" class="btn">Subscribe via WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="container">
+    <div class="section-label">
+      <span>Process</span>
+      <h2>How we work.</h2>
+      <p>A lean, transparent process built for velocity — fewer meetings, more momentum.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-step reveal">
+        <div class="tl-num">01</div>
+        <div class="tl-body"><h4>Discovery</h4><p>We define the problem, the goal, and what success looks like. Clear scope, no ambiguity.</p></div>
+      </div>
+      <div class="tl-step reveal">
+        <div class="tl-num">02</div>
+        <div class="tl-body"><h4>Build</h4><p>Focused sprints with regular demos. You see working software early and often.</p></div>
+      </div>
+      <div class="tl-step reveal">
+        <div class="tl-num">03</div>
+        <div class="tl-body"><h4>Deploy</h4><p>Production launch with monitoring, documentation, and a proper handoff.</p></div>
+      </div>
+      <div class="tl-step reveal">
+        <div class="tl-num">04</div>
+        <div class="tl-body"><h4>Evolve</h4><p>Post-launch support, iteration, and scaling. We stay engaged to keep things moving.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="section-label">
+      <span>About</span>
+      <h2>Engineering studio with a lean edge.</h2>
+    </div>
+    <div class="about-wrap">
+      <div class="about-image reveal">
+        <div class="img-wrap">
+          <div class="about-visual">
+            <div class="pv-ring r1"></div><div class="pv-ring r2"></div>
+            <div class="pv-dot d1"></div><div class="pv-dot d2"></div><div class="pv-dot d3"></div>
+            <div class="pv-line l1"></div><div class="pv-line l2"></div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#d4a856" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="width:56px;height:56px;opacity:.3;position:relative;z-index:1"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <p>Karakorum is a software engineering and digital marketing studio. We build AI-powered products that perform in production and craft strategies that drive measurable growth — without the bloat, overhead, or institutional drag.</p>
+        <p>Our work spans the full stack: infrastructure, backend, frontend, machine learning, and growth marketing. Every project is owned end-to-end by a senior engineer who writes code, makes decisions, and delivers results. No account managers. No handoffs. Just working software and clear strategy.</p>
+        <p>We keep the team lean by design — fewer layers means faster execution, sharper communication, and a direct line between the people building and the people buying. That's how great products get shipped.</p>
+        <div class="signature">— Karakorum Studio</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner reveal">
+      <h2>Let's build something.</h2>
+      <p>Prefer WhatsApp? That's the fastest way. Or pick any channel below.</p>
+      <div class="channels">
+        <div class="channel-row">
+          <a href="https://wa.me/919873801605" target="_blank" class="channel-btn primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            WhatsApp — +91 98738 01605
+          </a>
+        </div>
+        <div class="channel-row">
+          <a href="mailto:summati@zohomail.in" class="channel-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> Email</a>
+          <a href="mailto:summati@zohomail.in?subject=Book%20a%20Call%20with%20Karakorum&body=Hi%2C%20I'd%20like%20to%20schedule%20a%20call.%20Here%20are%20my%20preferred%20dates%20and%20times%3A%0A%0AProject%20summary%3A" class="channel-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Book a Call</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<button class="chat-toggle" id="chatToggle" onclick="toggleChat()">
+  <svg class="chat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+</button>
+
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-header">
+    <div class="chat-header-avatar">K</div>
+    <div><h4>Karakorum AI</h4><p>Online — replies in minutes</p></div>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="msg bot">Hi! I'm the Karakorum AI assistant. Tell me about your project and I'll connect you directly.</div>
+  </div>
+  <div class="chat-input-area">
+    <input type="text" id="chatInput" placeholder="Type a message..." onkeydown="if(event.key==='Enter') sendMessage()" />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-links">
+      <a href='/terms'>Terms</a>
+      <a href='/privacy'>Privacy</a>
+      <a href='/cookies'>Cookies</a>
+      <a href='/faq'>FAQ</a>
+    </div>
+    <div class="copyright">&copy; 2026 Karakorum — AI Engineering &amp; Digital Growth Studio.</div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){var c=document.getElementById('bg3d'),w=window.innerWidth,h=window.innerHeight,s=new THREE.Scene(),m=new THREE.PerspectiveCamera(45,w/h,.1,200);m.position.z=28;var r=new THREE.WebGLRenderer({antialias:!0,alpha:!0});r.setSize(w,h);r.setPixelRatio(Math.min(window.devicePixelRatio,2));c.appendChild(r.domElement);var C=[0xd4a856,0xc97a5a,0x7b5cc7,0x5a9a8a],S=[],t=0,T={x:0,y:0},sc=0;
+
+function A(g,cl,x,y,z,sz){var o=new THREE.MeshPhongMaterial({color:cl,wireframe:!0,transparent:!0,opacity:.15}),M=new THREE.Mesh(g,o);M.scale.set(sz||1,sz||1,sz||1);M.position.set(x,y,z);M.userData={rx:(Math.random()-.5)*.02,ry:(Math.random()-.5)*.02,ox:x,oy:y,oz:z,fs:.06+Math.random()*.15,fa:.3+Math.random()*.6,ph:Math.random()*Math.PI*2};s.add(M);S.push(M)}
+A(new THREE.IcosahedronGeometry(2),C[0],-9,4,-8,1.3);A(new THREE.TorusKnotGeometry(1.6,.4,64,8),C[1],11,-5,-14,1.2);A(new THREE.OctahedronGeometry(2),C[2],2,8,-22,1.2);A(new THREE.TorusGeometry(2,.35,20,50),C[3],-8,-7,-10,1.2);A(new THREE.IcosahedronGeometry(1.5),C[0],9,6,-26,1.1);A(new THREE.TetrahedronGeometry(1.6),C[1],-12,-4,-16,1.2);A(new THREE.BoxGeometry(1.6,1.6,1.6),C[2],7,-8,-12,1.1);A(new THREE.TorusKnotGeometry(1.2,.3,48,6),C[3],-6,1,-6,1);A(new THREE.DodecahedronGeometry(1.4),C[0],-4,-9,-20,1.1);A(new THREE.ConeGeometry(1.4,1.8,6),C[1],10,3,-28,1.2);A(new THREE.SphereGeometry(1.2,10,8),C[2],-6,7,-16,1);
+
+var pc=400,pG=new THREE.BufferGeometry(),pP=new Float32Array(pc*3),pC=new Float32Array(pc*3),pV=[];for(var i=0;i<pc;i++){pP[i*3]=(Math.random()-.5)*70;pP[i*3+1]=(Math.random()-.5)*50;pP[i*3+2]=(Math.random()-.5)*40-8;var ci=Math.floor(Math.random()*C.length);var clr=new THREE.Color(C[ci]);pC[i*3]=clr.r;pC[i*3+1]=clr.g;pC[i*3+2]=clr.b;pV.push(.006+Math.random()*.018)}
+pG.setAttribute('position',new THREE.BufferAttribute(pP,3));pG.setAttribute('color',new THREE.BufferAttribute(pC,3));var pM=new THREE.PointsMaterial({size:.1,transparent:!0,opacity:.4,blending:THREE.AdditiveBlending,vertexColors:!0,depthWrite:!1}),pS2=new THREE.Points(pG,pM);s.add(pS2);s.add(new THREE.AmbientLight(0x353025,.5));var dL=new THREE.DirectionalLight(0xffffff,.5);dL.position.set(4,5,6);s.add(dL);var dL2=new THREE.DirectionalLight(0xd4a856,.15);dL2.position.set(-3,-2,4);s.add(dL2);
+
+document.addEventListener('mousemove',function(e){T.x=(e.clientX/window.innerWidth)*2-1;T.y=(e.clientY/window.innerHeight)*2-1});window.addEventListener('scroll',function(){sc=window.scrollY/(document.body.scrollHeight-window.innerHeight);if(sc>1)sc=1;if(sc<0)sc=0});
+
+function an(){requestAnimationFrame(an);t+=.004;S.forEach(function(M){M.rotation.x+=M.userData.rx;M.rotation.y+=M.userData.ry;var f=Math.sin(t*M.userData.fs+M.userData.ph);M.position.y=M.userData.oy+f*M.userData.fa*.35;M.position.z=M.userData.oz+f*.25});var a=pS2.geometry.attributes.position.array;for(var i=0;i<pc;i++){a[i*3+1]-=pV[i]*.3;if(a[i*3+1]<-24)a[i*3+1]=24;a[i*3]+=Math.sin(t+pV[i])*.003;a[i*3+2]+=Math.sin(t*1.2+pV[i]*2)*.004}pS2.geometry.attributes.position.needsUpdate=!0;s.rotation.x+=(T.y*.12-s.rotation.x)*.01;s.rotation.y+=(T.x*.15-s.rotation.y)*.01;m.position.z=28-sc*8;r.render(s,m)}
+window.addEventListener('resize',function(){var w=window.innerWidth,h=window.innerHeight;m.aspect=w/h;m.updateProjectionMatrix();r.setSize(w,h)});an()})();
+</script>
+
+<script>
+(function(){var e=document.querySelectorAll('[data-depth]'),mx=0,my=0,sc=0;document.addEventListener('mousemove',function(e){mx=(e.clientX/window.innerWidth)*2-1;my=(e.clientY/window.innerHeight)*2-1});window.addEventListener('scroll',function(){sc=window.scrollY/(document.body.scrollHeight-window.innerHeight);if(sc>1)sc=1;if(sc<0)sc=0});function r(){requestAnimationFrame(r);e.forEach(function(el){var d=parseFloat(el.getAttribute('data-depth')),x=-sc*d*200+mx*d*40,y=my*d*25;el.style.transform='translate3d('+x+'px,'+y+'px,0)'})}r()})();
+
+(function(){var h=document.getElementById('heroContent');if(!h)return;document.addEventListener('mousemove',function(e){var x=(e.clientX/window.innerWidth)*2-1,y=(e.clientY/window.innerHeight)*2-1;h.style.transform='perspective(800px) rotateX('+(-y*8)+'deg) rotateY('+(x*8)+'deg)'})})();
+
+(function(){var e=document.querySelectorAll('.reveal');function c(){var h=window.innerHeight;e.forEach(function(e){var r=e.getBoundingClientRect();if(r.top<h-100&&r.bottom>40)e.classList.add('visible')})}window.addEventListener('scroll',c);window.addEventListener('resize',c);c()})();
+</script>
+
+<script>
+var cs=0,cl={};function toggleChat(){var p=document.getElementById('chatPanel'),b=document.getElementById('chatToggle');p.classList.toggle('open');b.classList.toggle('open');if(p.classList.contains('open')&&cs===0)setTimeout(function(){showOptions(['Start a project','Ask a question','Say hello'])},600)}
+function addMessage(t,y){var m=document.getElementById('chatMessages'),d=document.createElement('div');d.className='msg '+y;d.textContent=t;m.appendChild(d);m.scrollTop=m.scrollHeight}
+function showTyping(){var m=document.getElementById('chatMessages'),d=document.createElement('div');d.className='msg bot typing';d.id='typing';d.innerHTML='<span></span><span></span><span></span>';m.appendChild(d);m.scrollTop=m.scrollHeight}
+function hideTyping(){var e=document.getElementById('typing');if(e)e.remove()}
+function showOptions(o){var m=document.getElementById('chatMessages'),d=document.createElement('div');d.className='msg bot';var b=document.createElement('div');b.className='chat-options';o.forEach(function(x){var n=document.createElement('button');n.textContent=x;n.onclick=function(){handleInput(x)};b.appendChild(n)});d.appendChild(b);m.appendChild(d);m.scrollTop=m.scrollHeight}
+function handleInput(t){addMessage(t,'user');document.getElementById('chatInput').value='';cs++;setTimeout(function(){showTyping();setTimeout(function(){hideTyping();respond(t)},800)},200)}
+function sendMessage(){var i=document.getElementById('chatInput'),t=i.value.trim();if(!t)return;handleInput(t)}
+function respond(t){var f=[function(){addMessage("Great! What's your name?",'bot')},function(){addMessage("Nice to meet you, "+t+"! And your email?",'bot')},function(){cl.email=t;addMessage("Perfect! What best describes your need?",'bot');showOptions(['AI App','Marketing','Mobile App','Consulting','Other'])},function(){cl.need=t;addMessage("Thanks! I'll connect you with the studio directly.",'bot');setTimeout(function(){addMessage("You can also reach us instantly on WhatsApp:",'bot');var m=document.getElementById('chatMessages'),l=document.createElement('div');l.className='msg bot';l.innerHTML='<a href="https://wa.me/919873801605" target="_blank" style="color:#d4a856;font-weight:600">Chat on WhatsApp →</a>';m.appendChild(l);m.scrollTop=m.scrollHeight;cs=0},400)}];if(f[cs-1])f[cs-1]()}
+</script>
+
+</body>
+</html>
